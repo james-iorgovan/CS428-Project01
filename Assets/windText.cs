@@ -5,10 +5,10 @@ using TMPro;
 using UnityEngine.Networking;
 using System;
 
-public class WeatherAPIScript : MonoBehaviour
+public class windText : MonoBehaviour
 {
-    public WeatherInfo weatherInfo;
-    public Temperature main;
+    public WeatherInfo2 windInfo2;
+    public Wind2 main;
 
 
     public GameObject timeTextObject;
@@ -42,23 +42,22 @@ public class WeatherAPIScript : MonoBehaviour
              else
              {
                  // print out the weather data to make sure it makes sense
-                 weatherInfo = JsonUtility.FromJson<WeatherInfo>(webRequest.downloadHandler.text);
+                 windInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
              }
             //  Debug.Log(weatherInfo.main.temp);
-             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo.main.temp.ToString() + "F\n" + weatherInfo.main.humidity.ToString() + "%";
-             //timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo.main.humidity.ToString() + "%";
+             timeTextObject.GetComponent<TextMeshPro>().text = windInfo2.main.speed.ToString() + "mph" + windInfo2.main.deg.ToString() + "°";
         }
      }
 }
 
 [System.Serializable]
-public class WeatherInfo
+public class WeatherInfo2
 {
-    public Coord coord;
-    public Weather[] weather; 
-    public Temperature main;
-    public Wind wind;
-    public Location location;
+    public Coord2 coord;
+    public Weather2[] weather; 
+    public Temperature2 temperature;
+    public Wind2 main;
+    public Location2 location;
     public int visibility;
     public string clouds;
     public int dt;
@@ -69,14 +68,14 @@ public class WeatherInfo
     }
 
 [System.Serializable]
-public class Coord
+public class Coord2
 {
     public float lon;
     public float lat;
 }
 
 [System.Serializable]
-public class Weather
+public class Weather2
 {
     public int id;
     public string main;
@@ -85,7 +84,7 @@ public class Weather
 }
 
 [System.Serializable]
-public class Temperature
+public class Temperature2
 {
     public double temp;
     public float feels_like;
@@ -96,14 +95,14 @@ public class Temperature
 }
 
 [System.Serializable]
-public class Wind
+public class Wind2
 {
     public float speed;
     public int deg;
 }
 
 [System.Serializable]
-public class Location
+public class Location2
 {
     public int type;
     public int id;
