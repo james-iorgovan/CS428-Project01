@@ -7,21 +7,21 @@ using System;
 
 public class windText : MonoBehaviour
 {
-    public WeatherInfo2 windInfo2;
+    public WeatherInfo2 weatherInfo2;
     public Wind2 main;
 
 
     public GameObject timeTextObject;
        string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=b7bf96a0d52a6ae2fb2d5d5f4159fe43&units=imperial";
    
-    void Start()
+    void Start2()
     {
     // wait a couple seconds to start and then refresh every 30 seconds
 
-       InvokeRepeating("GetDataFromWeb", 2f, 30f);
+       InvokeRepeating("GetDataFromWeb2", 2f, 30f);
    }
 
-   void GetDataFromWeb()
+   void GetDataFromWeb2()
    {
 
        StartCoroutine(GetRequest(url));
@@ -42,10 +42,11 @@ public class windText : MonoBehaviour
              else
              {
                  // print out the weather data to make sure it makes sense
-                 windInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
+                 weatherInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
              }
-            //  Debug.Log(weatherInfo.main.temp);
-             timeTextObject.GetComponent<TextMeshPro>().text = windInfo2.main.speed.ToString() + "mph" + windInfo2.main.deg.ToString() + "°";
+             //Debug.Log(windInfo2.main.temp);
+             Debug.Log(weatherInfo2.main.speed);
+             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.main.speed.ToString() + "mph" + weatherInfo2.main.deg.ToString() + "°";
         }
      }
 }
@@ -57,7 +58,7 @@ public class WeatherInfo2
     public Weather2[] weather; 
     public Temperature2 temperature;
     public Wind2 main;
-    public Location2 location;
+    public Location2 sys;
     public int visibility;
     public string clouds;
     public int dt;
