@@ -8,20 +8,20 @@ using System;
 public class windText : MonoBehaviour
 {
     public WeatherInfo2 weatherInfo2;
-    public Wind2 main;
+    public Wind2 wind;
 
 
     public GameObject timeTextObject;
        string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=b7bf96a0d52a6ae2fb2d5d5f4159fe43&units=imperial";
    
-    void Start2()
+    void Start()
     {
     // wait a couple seconds to start and then refresh every 30 seconds
 
-       InvokeRepeating("GetDataFromWeb2", 2f, 30f);
+       InvokeRepeating("GetDataFromWeb", 2f, 30f);
    }
 
-   void GetDataFromWeb2()
+   void GetDataFromWeb()
    {
 
        StartCoroutine(GetRequest(url));
@@ -45,8 +45,7 @@ public class windText : MonoBehaviour
                  weatherInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
              }
              //Debug.Log(windInfo2.main.temp);
-             Debug.Log(weatherInfo2.main.speed);
-             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.main.speed.ToString() + "mph" + weatherInfo2.main.deg.ToString() + "°";
+             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.wind.speed.ToString();
         }
      }
 }
@@ -56,9 +55,9 @@ public class WeatherInfo2
 {
     public Coord2 coord;
     public Weather2[] weather; 
-    public Temperature2 temperature;
-    public Wind2 main;
-    public Location2 sys;
+    public Temperature2 main;
+    public Wind2 wind;
+    public Location2 location;
     public int visibility;
     public string clouds;
     public int dt;
