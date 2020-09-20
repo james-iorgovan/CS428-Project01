@@ -44,8 +44,8 @@ public class windText : MonoBehaviour
                  // print out the weather data to make sure it makes sense
                  weatherInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
              }
-             //Debug.Log(windInfo2.main.temp);
-             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.wind.speed.ToString();
+             //Debug.Log(weatherInfo2.wind.speed);
+             timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.wind.speed.ToString() + "mph\n" + weatherInfo2.wind.deg.ToString() + "°";
         }
      }
 }
@@ -110,3 +110,37 @@ public class Location2
     public int sunrise;
     public int sunset;
 }
+
+// [System.Serializable]
+// public class Directions
+// {
+//     public int deg;
+//     if(deg < 348.75 && deg > 11.25)
+//     {
+//         print("North");
+//     }
+//     else if(deg < 56.25 && deg > 33.75)
+//     {
+//         print("Northeast");
+//     }
+//         else if(deg < 101.25 && deg > 78.75)
+//     {
+//         print("East");
+//     }
+//         else if(deg < 146.25 && deg > 123.75)
+//     {
+//         print("Southeast");
+//     }
+//         else if(deg < 191.25 && deg > 168.75)
+//     {
+//         print("South");
+//     }
+//         else if(deg < 236.25 && deg > 213.75)
+//     {
+//         print("Southwest");
+//     }
+//         else if(deg < 281.25 && deg > 258.75)
+//     {
+//         print("West");
+//     }
+// }
