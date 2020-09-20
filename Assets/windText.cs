@@ -12,7 +12,7 @@ public class windText : MonoBehaviour
 
 
     public GameObject timeTextObject;
-       string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=b7bf96a0d52a6ae2fb2d5d5f4159fe43&units=imperial";
+       string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=&units=imperial";
    
     void Start()
     {
@@ -50,7 +50,7 @@ print("hello2");
              print("hello6");
              timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.wind.speed.ToString() + "mph\n" + weatherInfo2.wind.deg.ToString() + "°";
              print("hello7");
-        }
+        }/
      }
 }
 
