@@ -12,7 +12,7 @@ public class WeatherAPIScript : MonoBehaviour
 
 
     public GameObject timeTextObject;
-       string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=b7bf96a0d52a6ae2fb2d5d5f4159fe43&units=imperial";
+       string url = "http://api.openweathermap.org/data/2.5/weather?lat=41.88&lon=-87.6&APPID=&units=imperial";
    
     void Start()
     {
