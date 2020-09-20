@@ -46,6 +46,7 @@ public class WeatherAPIScript : MonoBehaviour
              }
             //  Debug.Log(weatherInfo.main.temp);
              timeTextObject.GetComponent<TextMeshPro>().text = "Temperature: " + weatherInfo.main.temp.ToString() + " F\n" + "Humidity: " + weatherInfo.main.humidity.ToString() + "%";
+             print("hello8");
              //timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo.main.humidity.ToString() + "%";
         }
      }

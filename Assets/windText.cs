@@ -17,13 +17,13 @@ public class windText : MonoBehaviour
     void Start()
     {
     // wait a couple seconds to start and then refresh every 30 seconds
-
+print("hello1");
        InvokeRepeating("GetDataFromWeb", 2f, 30f);
    }
 
    void GetDataFromWeb()
    {
-
+print("hello2");
        StartCoroutine(GetRequest(url));
    }
 
@@ -33,19 +33,23 @@ public class windText : MonoBehaviour
          {
              // Request and wait for the desired page.
              yield return webRequest.SendWebRequest();
+             print("hello3");
 
 
              if (webRequest.isNetworkError)
-             {
+             {print("hello4");
                  Debug.Log(": Error: " + webRequest.error);
              }
              else
              {
                  // print out the weather data to make sure it makes sense
+                 print("hello5");
                  weatherInfo2 = JsonUtility.FromJson<WeatherInfo2>(webRequest.downloadHandler.text);
              }
              //Debug.Log(weatherInfo2.wind.speed);
+             print("hello6");
              timeTextObject.GetComponent<TextMeshPro>().text = weatherInfo2.wind.speed.ToString() + "mph\n" + weatherInfo2.wind.deg.ToString() + "°";
+             print("hello7");
         }
      }
 }
@@ -65,7 +69,14 @@ public class WeatherInfo2
     public int id;
     public string name;
     public int cod;
-    }
+}
+
+[System.Serializable]
+public class Wind2
+{
+    public float speed;
+    public int deg;
+}
 
 [System.Serializable]
 public class Coord2
@@ -94,12 +105,7 @@ public class Temperature2
     public int humidity;
 }
 
-[System.Serializable]
-public class Wind2
-{
-    public float speed;
-    public int deg;
-}
+
 
 [System.Serializable]
 public class Location2
